@@ -26,11 +26,18 @@ public class PushManager {
         return mInstance;
     }
 
+
+    public void handlePush(Message message) {
+//		TODO parse content to Message/Notice
+        PushChanger.getInstance().notifyChanged(message);
+    }
+
+
     public void handlePush(String content) {
         //TODO
         //Message message = new Message();
         Message message = Message.test("00001", ChatTest.TARGETID, ChatTest.SELFID);
-        PushChanger.getInstace().notifyChanged(message);
+        PushChanger.getInstance().notifyChanged(message);
     }
 
     public void SendMessage(Message message) {
@@ -38,22 +45,22 @@ public class PushManager {
 //        service.putExtra(Constants.KEY_MESSAGE,message);
 //        context.startService(service);
         message.setStatus(Message.StatusType.ing);
-        PushChanger.getInstace().notifyChanged(message);
+        PushChanger.getInstance().notifyChanged(message);
         message.setStatus(Message.StatusType.done);
-        PushChanger.getInstace().notifyChanged(message);
+        PushChanger.getInstance().notifyChanged(message);
 
     }
 
     public void addObserver(PushWatcher watcher) {
-        PushChanger.getInstace().addObserver(watcher);
+        PushChanger.getInstance().addObserver(watcher);
     }
 
     public void removeObserver(PushWatcher watcher) {
-        PushChanger.getInstace().deleteObserver(watcher);
+        PushChanger.getInstance().deleteObserver(watcher);
     }
 
     public void removeObservers(PushWatcher watcher) {
-        PushChanger.getInstace().deleteObservers();
+        PushChanger.getInstance().deleteObservers();
     }
 
 }

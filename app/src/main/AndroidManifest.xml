@@ -7,7 +7,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppBaseTheme" >
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <uses-library android:name="android.test.runner"/>
     </application>
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:label="AndroidJUnitTest"
+        android:targetPackage="com.ysy.ysy_im" />
 
 </manifest>

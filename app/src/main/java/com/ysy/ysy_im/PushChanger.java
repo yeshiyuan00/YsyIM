@@ -1,5 +1,6 @@
 package com.ysy.ysy_im;
 
+import com.ysy.ysy_im.db.MessageController;
 import com.ysy.ysy_im.entities.Message;
 
 import java.util.Observable;
@@ -11,7 +12,7 @@ import java.util.Observable;
 public class PushChanger extends Observable {
     private static PushChanger mInstance;
 
-    public static PushChanger getInstace(){
+    public static PushChanger getInstance(){
         if(mInstance==null){
             mInstance=new PushChanger();
 
@@ -22,6 +23,7 @@ public class PushChanger extends Observable {
     public void notifyChanged(Message message) {
 
         //
+        MessageController.addOrUpdata(message);
         setChanged();
         notifyObservers(message);
     }

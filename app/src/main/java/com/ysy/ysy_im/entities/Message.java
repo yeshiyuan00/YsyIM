@@ -1,28 +1,44 @@
 package com.ysy.ysy_im.entities;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 import java.io.Serializable;
 
 /**
  * Author: yeshiyuan
  * Date: 12/2/15.
  */
+@DatabaseTable(tableName = "message")
 public class Message implements Serializable {
 
     /**
      *
      */
     private static final long serialVersionUID = 1L;
+    public static final String TIMESTAMP = "timestamp";
+    public static final String SENDERID = "senderId";
+    public static final String RECEIVERID = "receiverId";
     public enum StatusType{ing,done,fail};
     public enum MessageType{plain,audio,image,location,emo};
 
+    @DatabaseField(id = true)
     private String id;
+    @DatabaseField
     private String senderId;
+    @DatabaseField
     private String receiverId;
+    @DatabaseField
     private MessageType type;
+    @DatabaseField
     private String content;
+    @DatabaseField
     private Attachment attachment;
+    @DatabaseField
     private StatusType status;
+    @DatabaseField
     private long timestamp;
+    @DatabaseField
     private boolean isRead;
 
     public String getId() {
@@ -72,6 +88,12 @@ public class Message implements Serializable {
     }
     public void setStatus(StatusType status) {
         this.status = status;
+    }
+    public boolean isRead() {
+        return isRead;
+    }
+    public void setRead(boolean isRead) {
+        this.isRead = isRead;
     }
 
     public static Message test(String id,String senderId, String receiverId){
