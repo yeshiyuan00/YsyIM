@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true" >
+
+        <Button
+            android:id="@+id/mHomeConversationBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/mHomeConversationLabel"
+            android:layout_weight="1.0" />
+
+        <Button
+            android:id="@+id/mHomeContactBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/mHomeContactLabel"
+            android:layout_weight="1.0" />
+
+        <Button
+            android:id="@+id/mHomeProfileBtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/mHomeProfileLabel"
+            android:layout_weight="1.0" />
+    </LinearLayout>
+
+</RelativeLayout>
