@@ -22,7 +22,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        PushManager.startWork(this, PushConstants.LOGIN_TYPE_API_KEY, Utils.getMetaValue(this, "api_key"));
+        PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY,
+                Utils.getMetaValue(HomeActivity.this, "api_key"));
 //		PushManager.setTags(this, mCurrentUser.getPushTags());
 
 
@@ -32,6 +33,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         mHomeConversationBtn.setOnClickListener(this);
         mHomeContactBtn.setOnClickListener(this);
         mHomeProfileBtn.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
     }
 
     @Override
@@ -50,5 +56,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 break;
         }
+
+
     }
 }
