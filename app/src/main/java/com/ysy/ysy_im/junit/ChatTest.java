@@ -3,9 +3,8 @@ package com.ysy.ysy_im.junit;
 
 import android.test.AndroidTestCase;
 
-import com.ysy.ysy_im.PushChanger;
-import com.ysy.ysy_im.PushManager;
-import com.ysy.ysy_im.PushWatcher;
+import com.ysy.ysy_im.push.PushManager;
+import com.ysy.ysy_im.push.PushWatcher;
 import com.ysy.ysy_im.entities.Message;
 import com.ysy.ysy_im.utilities.Trace;
 

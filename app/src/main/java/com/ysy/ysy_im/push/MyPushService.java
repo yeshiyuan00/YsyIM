@@ -1,17 +1,18 @@
-package com.ysy.ysy_im;
+package com.ysy.ysy_im.push;
 
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
+import com.ysy.ysy_im.Constants;
 import com.ysy.ysy_im.entities.Message;
 
 /**
  * Author: yeshiyuan
  * Date: 12/2/15.
  */
-public class PushService extends Service {
+public class MyPushService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {

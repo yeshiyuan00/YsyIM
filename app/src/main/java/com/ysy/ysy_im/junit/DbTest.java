@@ -3,9 +3,9 @@ package com.ysy.ysy_im.junit;
 import android.test.AndroidTestCase;
 
 import com.ysy.ysy_im.IMApplication;
-import com.ysy.ysy_im.PushChanger;
-import com.ysy.ysy_im.PushManager;
-import com.ysy.ysy_im.PushWatcher;
+import com.ysy.ysy_im.push.PushChanger;
+import com.ysy.ysy_im.push.PushManager;
+import com.ysy.ysy_im.push.PushWatcher;
 import com.ysy.ysy_im.db.ConversationController;
 import com.ysy.ysy_im.db.MessageController;
 import com.ysy.ysy_im.entities.Conversation;

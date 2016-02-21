@@ -1,4 +1,4 @@
-package com.ysy.ysy_im;
+package com.ysy.ysy_im.push;
 
 import com.ysy.ysy_im.entities.Message;
 

@@ -1,4 +1,4 @@
-package com.ysy.ysy_im;
+package com.ysy.ysy_im.push;
 
 import android.content.Context;
 import android.text.TextUtils;

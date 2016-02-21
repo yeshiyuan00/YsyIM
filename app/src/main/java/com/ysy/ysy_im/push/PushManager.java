@@ -1,7 +1,6 @@
-package com.ysy.ysy_im;
+package com.ysy.ysy_im.push;
 
 import android.content.Context;
-import android.content.Intent;
 
 import com.ysy.ysy_im.entities.Message;
 import com.ysy.ysy_im.junit.ChatTest;
@@ -41,7 +40,7 @@ public class PushManager {
     }
 
     public void SendMessage(Message message) {
-//        Intent service=new Intent(context,PushService.class);
+//        Intent service=new Intent(context,MyPushService.class);
 //        service.putExtra(Constants.KEY_MESSAGE,message);
 //        context.startService(service);
         message.setStatus(Message.StatusType.ing);

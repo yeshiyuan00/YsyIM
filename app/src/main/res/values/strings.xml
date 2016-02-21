@@ -3,4 +3,6 @@
     <string name="mHomeProfileLabel">Profile</string>
     <string name="mHomeContactLabel">Contact</string>
     <string name="mHomeConversationLabel">Conversation</string>
+    <string name="mLoginSubmitLabel">Login</string>
+
 </resources>
