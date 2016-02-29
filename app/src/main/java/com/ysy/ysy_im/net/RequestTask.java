@@ -1,6 +1,8 @@
 package com.ysy.ysy_im.net;
 
 import android.os.AsyncTask;
+import android.util.Log;
+
 import com.ysy.ysy_im.net.AppException.ExceptionStatus;
 
 import org.apache.http.HttpResponse;
@@ -75,7 +77,9 @@ public class RequestTask extends AsyncTask<Void, Integer, Object> {
 					}else {
 						object = request.callback.handle(connection);
 					}
+
 					return request.callback.postRequest(object);
+
 				}else {
 					return null;
 				}

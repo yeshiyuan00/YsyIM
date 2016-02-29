@@ -1,5 +1,7 @@
 package com.ysy.ysy_im.utilities;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;

@@ -1,6 +1,8 @@
 package com.ysy.ysy_im.net.callback;
 
 
+import android.util.Log;
+
 import com.ysy.ysy_im.net.AppException;
 import com.ysy.ysy_im.net.IRequestListener;
 import com.ysy.ysy_im.utilities.TextUtil;
@@ -67,6 +69,7 @@ public abstract class AbstractCallback<T> implements ICallback<T>{
 			switch (statusCode) {
 			case HttpStatus.SC_OK:
 				if (TextUtil.isValidate(path)) {
+
 					FileOutputStream fos = new FileOutputStream(path);
 					InputStream is = connection.getInputStream();
 					byte[] buffer = new byte[2048];
