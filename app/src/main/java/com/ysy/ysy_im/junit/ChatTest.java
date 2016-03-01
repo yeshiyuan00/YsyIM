@@ -3,7 +3,7 @@ package com.ysy.ysy_im.junit;
 
 import android.test.AndroidTestCase;
 
-import com.ysy.ysy_im.push.PushManager;
+import com.ysy.ysy_im.push.IMPushManager;
 import com.ysy.ysy_im.push.PushWatcher;
 import com.ysy.ysy_im.entities.Message;
 import com.ysy.ysy_im.utilities.Trace;
@@ -30,22 +30,22 @@ public class ChatTest extends AndroidTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        PushManager.getInstance(getContext()).addObserver(watcher1);
+        IMPushManager.getInstance(getContext()).addObserver(watcher1);
     }
 
     public void testSendMsg() throws Exception {
         Message message = Message.test("00001", SELFID, TARGETID);
-        PushManager.getInstance(getContext()).SendMessage(message);
+        IMPushManager.getInstance(getContext()).SendMessage(message);
     }
 
     public void testReceiveMsg() throws Exception {
-        PushManager.getInstance(getContext()).handlePush("");
+        IMPushManager.getInstance(getContext()).handlePush("");
     }
 
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
-        PushManager.getInstance(getContext()).removeObserver(watcher1);
+        IMPushManager.getInstance(getContext()).removeObserver(watcher1);
 
     }
 }

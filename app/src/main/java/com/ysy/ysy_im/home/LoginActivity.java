@@ -1,5 +1,6 @@
 package com.ysy.ysy_im.home;
 
+import android.content.Intent;
 import android.preference.PreferenceScreen;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.ysy.ysy_im.BaseActivisty;
+import com.ysy.ysy_im.IMApplication;
 import com.ysy.ysy_im.R;
 import com.ysy.ysy_im.entities.Profile;
 import com.ysy.ysy_im.net.AppException;
@@ -48,7 +50,7 @@ public class LoginActivity extends BaseActivisty implements View.OnClickListener
     }
 
     @Override
-    protected void intiializeData() {
+    protected void initializeData() {
         mLoginAccountEdt.setText(PrefsAccessor.getInstance(LoginActivity.this)
                 .getString(Constants.KEY_ACCOUNT));
         mLoginPwdEdt.setText(PrefsAccessor.getInstance(LoginActivity.this)
@@ -89,8 +91,10 @@ public class LoginActivity extends BaseActivisty implements View.OnClickListener
             @Override
             public void onSuccess(Profile result) {
                 Trace.d(result.toString());
+                IMApplication.setProfile(result);
                 PrefsAccessor.getInstance(LoginActivity.this).saveString(Constants.KEY_ACCOUNT, account);
                 PrefsAccessor.getInstance(LoginActivity.this).saveString(Constants.KEY_PASSWORD, pwd);
+                goHome();
             }
 
             @Override
@@ -103,4 +107,10 @@ public class LoginActivity extends BaseActivisty implements View.OnClickListener
         request.execute();
 
     }
+
+    protected void goHome() {
+        Intent intent = new Intent(this, ConversationActivity.class);
+        startActivity(intent);
+    }
+
 }

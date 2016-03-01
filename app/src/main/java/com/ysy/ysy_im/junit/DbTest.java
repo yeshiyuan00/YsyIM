@@ -3,8 +3,8 @@ package com.ysy.ysy_im.junit;
 import android.test.AndroidTestCase;
 
 import com.ysy.ysy_im.IMApplication;
+import com.ysy.ysy_im.push.IMPushManager;
 import com.ysy.ysy_im.push.PushChanger;
-import com.ysy.ysy_im.push.PushManager;
 import com.ysy.ysy_im.push.PushWatcher;
 import com.ysy.ysy_im.db.ConversationController;
 import com.ysy.ysy_im.db.MessageController;
@@ -59,19 +59,19 @@ public class DbTest extends AndroidTestCase {
     protected void setUp() throws Exception {
         super.setUp();
         //
-        // PushManager.getInstance(getContext()).addObserver(conversationWatcher);
-        IMApplication.gContext = getContext();
+        // IMPushManager.getInstance(getContext()).addObserver(conversationWatcher);
+        //IMApplication.gContext = getContext();
     }
 
     @Override
     protected void tearDown() throws Exception {
         super.tearDown();
         //
-        // PushManager.getInstance(getContext()).removeObserver(conversationWatcher);
+        // IMPushManager.getInstance(getContext()).removeObserver(conversationWatcher);
     }
 
     public void testChat() throws Exception{
-        PushManager.getInstance(getContext()).addObserver(watcher);
+        IMPushManager.getInstance(getContext()).addObserver(watcher);
         // TODO query db
         ArrayList<Message> messages = MessageController.queryAllByTimeAsc(SELFID, TARGETID);
         if (messages != null && messages.size() > 0) {
@@ -81,21 +81,21 @@ public class DbTest extends AndroidTestCase {
         }
         // TODO new message
         Message message = Message.test("00003", OTHERID, ChatTest.SELFID);
-        PushManager.getInstance(getContext()).handlePush(message);
+        IMPushManager.getInstance(getContext()).handlePush(message);
         // TODO notify
-        PushManager.getInstance(getContext()).removeObserver(watcher);
+        IMPushManager.getInstance(getContext()).removeObserver(watcher);
     }
 
     public void testConversation() throws Exception{
-        PushManager.getInstance(getContext()).addObserver(conversationWatcher);
+        IMPushManager.getInstance(getContext()).addObserver(conversationWatcher);
         updateConversation();
         Message message = Message.test("00002", OTHERID, ChatTest.SELFID);
-        PushManager.getInstance(getContext()).handlePush(message);
-        PushManager.getInstance(getContext()).removeObserver(conversationWatcher);
+        IMPushManager.getInstance(getContext()).handlePush(message);
+        IMPushManager.getInstance(getContext()).removeObserver(conversationWatcher);
     }
 
     public void testBack() throws Exception {
-        PushManager.getInstance(getContext()).addObserver(watcher);
+        IMPushManager.getInstance(getContext()).addObserver(watcher);
         ArrayList<Message> messages = MessageController.queryAllByTimeAsc(SELFID, OTHERID);
         if (messages != null && messages.size() > 0) {
             for (Message message : messages) {
@@ -106,17 +106,17 @@ public class DbTest extends AndroidTestCase {
         Message message = Message.test("00001", SELFID, OTHERID);
         message.setStatus(Message.StatusType.ing);
         PushChanger.getInstance().notifyChanged(message);
-        PushManager.getInstance(getContext()).removeObserver(watcher);
+        IMPushManager.getInstance(getContext()).removeObserver(watcher);
 
         ConversationController.markAsRead(OTHERID);
 
-        PushManager.getInstance(getContext()).addObserver(conversationWatcher);
+        IMPushManager.getInstance(getContext()).addObserver(conversationWatcher);
         updateConversation();
 
         message.setStatus(Message.StatusType.done);
         PushChanger.getInstance().notifyChanged(message);
 
-        PushManager.getInstance(getContext()).removeObserver(conversationWatcher);
+        IMPushManager.getInstance(getContext()).removeObserver(conversationWatcher);
 
     }
 

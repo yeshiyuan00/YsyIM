@@ -68,6 +68,8 @@ public class PushReceiver extends PushMessageReceiver {
                 + "\" customContentString=" + customContentString;
         Log.d(TAG, messageString);
 
+        IMPushManager.getInstance(context).handlePush(message);
+
         // 自定义内容获取方式，mykey和myvalue对应透传消息推送时自定义内容中设置的键和值
         if (!TextUtils.isEmpty(customContentString)) {
             JSONObject customJson = null;
@@ -242,7 +244,7 @@ public class PushReceiver extends PushMessageReceiver {
     }
 
     /**
-     * PushManager.stopWork() 的回调函数。
+     * IMPushManager.stopWork() 的回调函数。
      *
      * @param context
      *            上下文

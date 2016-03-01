@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY,
                 Utils.getMetaValue(HomeActivity.this, "api_key"));
-//		PushManager.setTags(this, mCurrentUser.getPushTags());
+//		IMPushManager.setTags(this, mCurrentUser.getPushTags());
 
 
         mHomeConversationBtn = (Button)findViewById(R.id.mHomeConversationBtn);

@@ -56,24 +56,7 @@ public class ConversationController {
     }
 
     public static void syncMessage(Message message) {
-        Conversation conversation = new Conversation();
-        String targetId = message.getSenderId() ==
-                IMApplication.selfId ? message.getReceiverId() : message.getSenderId();
-        conversation.setTargetId(targetId);
-        conversation.setContent(message.getContent());
-        conversation.setStatus(message.getStatus());
-        conversation.setTimestamp(message.getTimestamp());
-        conversation.setType(message.getType());
-        if(!message.getSenderId().equals(IMApplication.selfId)){
-            Conversation tmp=querybyId(targetId);
-            conversation.setUnreadNum(tmp==null?1:tmp.getUnreadNum()+1);
-            }
-        else {
-            // TODO: 1/14/16
-            Conversation tmp=querybyId(targetId);
-            conversation.setUnreadNum(tmp==null?0:tmp.getUnreadNum());
-        }
-        addOrUpdata(conversation);
+        addOrUpdata(message.copyTo());
         }
 
     public static void markAsRead(String targetId){

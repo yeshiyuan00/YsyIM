@@ -12,7 +12,7 @@ import com.ysy.ysy_im.entities.Message;
  * Author: yeshiyuan
  * Date: 12/2/15.
  */
-public class MyPushService extends Service {
+public class IMPushService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
@@ -23,16 +23,8 @@ public class MyPushService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Message message = (Message) intent.getSerializableExtra(Constants.KEY_MESSAGE);
         switch (message.getType()) {
-            case plain:
+            case txt:
                 sendPlainMsg(message);
-                break;
-            case audio:
-                break;
-            case emo:
-                break;
-            case image:
-                break;
-            case location:
                 break;
 
             default:

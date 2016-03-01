@@ -2,6 +2,7 @@ package com.ysy.ysy_im.push;
 
 import android.content.Context;
 
+import com.google.gson.Gson;
 import com.ysy.ysy_im.entities.Message;
 import com.ysy.ysy_im.junit.ChatTest;
 
@@ -9,18 +10,19 @@ import com.ysy.ysy_im.junit.ChatTest;
  * Author: yeshiyuan
  * Date: 12/2/15.
  */
-public class PushManager {
-    private static PushManager mInstance;
+public class IMPushManager {
+    private static IMPushManager mInstance;
     private Context context;
+    private Gson gson=new Gson();
 
-    public PushManager(Context context) {
+    public IMPushManager(Context context) {
 
         this.context = context;
     }
 
-    public static PushManager getInstance(Context context) {
+    public static IMPushManager getInstance(Context context) {
         if (mInstance == null) {
-            mInstance = new PushManager(context);
+            mInstance = new IMPushManager(context);
         }
         return mInstance;
     }
@@ -33,14 +35,12 @@ public class PushManager {
 
 
     public void handlePush(String content) {
-        //TODO
-        //Message message = new Message();
-        Message message = Message.test("00001", ChatTest.TARGETID, ChatTest.SELFID);
+        Message message = gson.fromJson(content,Message.class);
         PushChanger.getInstance().notifyChanged(message);
     }
 
     public void SendMessage(Message message) {
-//        Intent service=new Intent(context,MyPushService.class);
+//        Intent service=new Intent(context,IMPushService.class);
 //        service.putExtra(Constants.KEY_MESSAGE,message);
 //        context.startService(service);
         message.setStatus(Message.StatusType.ing);

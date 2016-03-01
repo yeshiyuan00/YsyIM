@@ -11,13 +11,16 @@ import com.ysy.ysy_im.entities.Message.StatusType;
  */
 @DatabaseTable(tableName = "conversation")
 public class Conversation {
-    public static final String TIMESTAMP="timestamp";
+    public static final String TIMESTAMP = "timestamp";
     public static final String UNREADNUM = "unreadNum";
     public static final String TARGETID = "targetId";
     @DatabaseField(id = true)
     private String targetId;
     @DatabaseField
     private String content;
+    private String targetName;
+    @DatabaseField
+    private String targetPicture;
     @DatabaseField
     private MessageType type;
     @DatabaseField
@@ -76,8 +79,34 @@ public class Conversation {
         this.unreadNum = unreadNum;
     }
 
+    public String getTargetName() {
+        return targetName;
+    }
+
+    public void setTargetName(String targetName) {
+        this.targetName = targetName;
+    }
+
+    public String getTargetPicture() {
+        return targetPicture;
+    }
+
+    public void setTargetPicture(String targetPicture) {
+        this.targetPicture = targetPicture;
+    }
+
     @Override
     public String toString() {
-        return targetId + " msg " + content +" unread "+ unreadNum + " status: " + status;
+        return targetId + " msg " + content + " unread " + unreadNum + " status: " + status;
+    }
+
+    @Override
+    public int hashCode() {
+        return targetId.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return hashCode()==o.hashCode();
     }
 }

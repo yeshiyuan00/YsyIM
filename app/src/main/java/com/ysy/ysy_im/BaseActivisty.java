@@ -13,12 +13,12 @@ public abstract class BaseActivisty extends Activity {
         super.onCreate(savedInstanceState);
         setContentView();
         initializeView();
-        intiializeData();
+        initializeData();
     }
 
     protected abstract void setContentView();
     protected abstract void initializeView();
-    protected abstract void intiializeData();
+    protected abstract void initializeData();
 
     @Override
     protected void onResume() {

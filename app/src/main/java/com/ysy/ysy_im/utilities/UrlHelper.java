@@ -10,6 +10,7 @@ public class UrlHelper {
 	public static String DOMAIN = "http://im.stay4it.com";
 	private static final String ACTION_LOGIN = "/user/account/login";
 	private static final String ACTION_BIND_BAIDU_PUSH = "/user/account/bindBaiduPushUserId";
+	private static final String ACTION_GET_CONVERSATION = "/user/message/getConversationList";
 
 	public static String getDomain() {
 		return DOMAIN + "/v1";
@@ -17,6 +18,11 @@ public class UrlHelper {
 
 	public static String loadLogin() {
 		return getDomain() + ACTION_LOGIN;
+	}
+
+
+	public static String loadConversation(){
+		return getDomain() + ACTION_GET_CONVERSATION;
 	}
 
 	public static String loadBindBaidu(String userId) {
